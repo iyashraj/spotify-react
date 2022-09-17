@@ -4,10 +4,12 @@ import {useState, useEffect} from 'react';
 import {getTokenFromUrl} from './constant/spotify'
 import SpotifyWebApi from 'spotify-web-api-js'
 import { useDispatch, useSelector } from 'react-redux';
+import Header from './components/body/Header';
+import SongRow from './components/body/SongRow';
 
 
 function App() {
-  const stateTest = useSelector(state => console.log(state, "tring to fetch state"))
+  const stateTest = useSelector(state => console.log(Object.keys(state), "tring to fetch state"))
   const spotify = new SpotifyWebApi();
   const [token, setToken] = useState()
   const dispatch = useDispatch()
@@ -52,9 +54,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* {token?  <Login />: <h1>Loing</h1>} */}
-      <Login />
+      {token? <h1>Loing</h1> : <Login />}
       {/* {token? <Player spotify={spotify} />: <Login />} */}
+      {/* <SongRow /> */}
     </div>
   );
 }
