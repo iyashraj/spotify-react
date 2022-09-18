@@ -7,7 +7,6 @@ import styled from "styled-components";
 
 function Body({ spotify }) {
   const [{ discover_weekly }] = useSelector((state) => state);
-
   return (
     <BodyMain>
       <Header spotify={spotify} />

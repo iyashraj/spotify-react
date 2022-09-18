@@ -4,12 +4,12 @@ import {useState, useEffect} from 'react';
 import {getTokenFromUrl} from './constant/spotify'
 import SpotifyWebApi from 'spotify-web-api-js'
 import { useDispatch, useSelector } from 'react-redux';
-import Header from './components/body/Header';
-import SongRow from './components/body/SongRow';
+import Player from './components/Player';
 
 
 function App() {
-  const stateTest = useSelector(state => console.log(Object.keys(state), "tring to fetch state"))
+  // const token = useSelector(state => console.log(Object.values(state).token, "tring to fetch state"))
+  // const token = useSelector(state => state.token)
   const spotify = new SpotifyWebApi();
   const [token, setToken] = useState()
   const dispatch = useDispatch()
@@ -20,12 +20,12 @@ function App() {
     const _token = hash.access_token;
 
     if (_token) {
-      // setToken(_token);
       // spotify.setAccessToken(_token);
       dispatch({
         type: "SET_TOKEN",
         token: _token
       })
+      setToken(_token);
     }
 
     console.log("token", _token);
@@ -51,11 +51,11 @@ function App() {
       })
     })
   },[])
-
+console.log(token, "token mil gya.. token mil gya")
   return (
     <div className="App">
-      {token? <h1>Loing</h1> : <Login />}
-      {/* {token? <Player spotify={spotify} />: <Login />} */}
+      {/* {token? <h1>Loing</h1> : <Login />} */}
+      {token? <Player spotify={spotify} />: <Login />}
       {/* <SongRow /> */}
     </div>
   );
