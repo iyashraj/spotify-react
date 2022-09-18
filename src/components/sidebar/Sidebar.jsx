@@ -5,7 +5,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import { LibraryMusic } from "@material-ui/icons";
 import { useSelector } from 'react-redux';
-import { Store } from 'redux';
+// import { Store } from 'redux';
 
 const Sidebar = () => {
   const {playlists
